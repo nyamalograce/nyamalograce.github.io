@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nyamalo Grace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cinzel:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#fff;color:#0a0e1a;font-family:'Playfair Display',serif}
+
+    /* NAV */
+    .ng-nav{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 2.5rem;background:#fff;border-bottom:0.5px solid rgba(10,14,26,0.15);position:sticky;top:0;z-index:100}
+    .ng-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .ng-brand{font-family:'Cinzel',serif;font-size:14px;letter-spacing:0.18em;color:#0a0e1a;font-weight:500}
+    .ng-nav ul{display:flex;gap:2rem;list-style:none}
+    .ng-nav a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:#0a0e1a;text-decoration:none;text-transform:uppercase;font-weight:500}
+    .ng-nav a:hover{color:#1a1f35}
+    .ng-nav a.active{border-bottom:1px solid #1a1f35}
+
+    /* HERO */
+    .ng-hero{text-align:center;padding:5rem 2rem 4.5rem;background:#fff}
+    .ng-hero h1{font-family:'Cinzel',serif;font-size:38px;font-weight:500;color:#0a0e1a;line-height:1.3;letter-spacing:0.05em;margin-bottom:2.5rem}
+    .logo-img{width:180px;height:180px;margin:0 auto 2rem;display:block;object-fit:contain}
+    .logo-placeholder{width:180px;height:180px;border:0.5px solid rgba(10,14,26,0.2);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 2rem;background:#f9f9f9;gap:8px}
+    .logo-placeholder-label{font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.2em;color:rgba(10,14,26,0.3);text-transform:uppercase}
+    .hero-tagline{font-family:'Great Vibes',cursive;font-size:30px;color:#0a0e1a;margin:0 auto 2rem;max-width:500px}
+    .hero-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+    .btn{display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;background:#1a1f35;padding:14px 32px;text-decoration:none;font-weight:500;border:none;cursor:pointer;transition:background 0.2s}
+    .btn:hover{background:#0a0e1a}
+    .btn-ghost{display:inline-block;background:transparent;color:#1a1f35;border:1px solid #1a1f35;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:14px 32px;text-decoration:none;font-weight:500;transition:all 0.2s}
+    .btn-ghost:hover{background:#1a1f35;color:#fff}
+
+    /* COLLECTION PREVIEW */
+    .section-white{padding:3.5rem 2.5rem;background:#fff;border-top:0.5px solid rgba(10,14,26,0.1)}
+    .sec-title-script{font-family:'Great Vibes',cursive;font-size:52px;font-weight:400;color:#0a0e1a;text-align:center;margin-bottom:2rem;line-height:1.2}
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1.5rem;max-width:680px;margin:0 auto}
+    .product-card{background:#fff;border:0.5px solid rgba(10,14,26,0.12);text-decoration:none;color:inherit;display:block;transition:box-shadow 0.2s}
+    .product-card:hover{box-shadow:0 4px 24px rgba(10,14,26,0.08)}
+    .product-img{width:100%;aspect-ratio:1;background:#f5f5f5;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(10,14,26,0.08);overflow:hidden}
+    .product-img img{width:100%;height:100%;object-fit:cover}
+    .product-info{padding:1rem}
+    .product-name{font-family:'Cinzel',serif;font-size:12px;color:#0a0e1a;letter-spacing:0.08em;margin-bottom:3px;font-weight:500}
+    .product-line{font-size:13px;font-style:italic;color:rgba(10,14,26,0.5);margin-bottom:6px}
+    .product-price{font-size:15px;font-style:italic;color:#1a1f35;font-weight:600}
+
+    /* SCRIPTURE BAND */
+    .scripture-band{background:#1a1f35;padding:2.5rem;text-align:center}
+    .scripture-band p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.85);letter-spacing:0.02em;margin-bottom:0.5rem;max-width:580px;margin-left:auto;margin-right:auto;font-weight:400}
+    .scripture-band .ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;color:rgba(255,255,255,0.55);font-style:normal;display:block;font-weight:500}
+
+    /* FOOTER */
+    .ng-footer{border-top:0.5px solid rgba(255,255,255,0.1);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:#1a1f35}
+    .ng-footer-copy{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.35)}
+    .ng-footer-links{display:flex;gap:1.5rem}
+    .ng-footer-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.35);text-decoration:none;text-transform:uppercase}
+    .ng-footer-links a:hover{color:#fff}
+
+    @media(max-width:600px){
+      .ng-nav{padding:1rem 1.25rem}
+      .ng-nav ul{gap:1rem}
+      .ng-brand{font-size:12px}
+      .ng-hero{padding:3rem 1.25rem 3rem}
+      .ng-hero h1{font-size:28px}
+      .section-white{padding:2.5rem 1.25rem}
+      .ng-footer{flex-direction:column;gap:1rem;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="ng-nav">
+    <a class="ng-logo" href="index.html">
+      <svg width="30" height="34" viewBox="0 0 36 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="6" width="28" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="4" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="28" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="2" y="28" width="32" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="6" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="25" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="14" y="2" width="8" height="8" rx="1" fill="#1a1f35"/>
+        <rect x="16" y="0" width="4" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="8" y="14" width="20" height="14" rx="1" fill="rgba(26,31,53,0.1)" stroke="#1a1f35" stroke-width="0.5"/>
+      </svg>
+      <span class="ng-brand">Nyamalo Grace</span>
+    </a>
+    <ul>
+      <li><a href="collection.html">The Mystery of Chastity</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="ng-hero">
+    <h1>Nyamalo Grace</h1>
+    <div class="logo-placeholder">
+      <svg width="48" height="54" viewBox="0 0 36 40" xmlns="http://www.w3.org/2000/svg" opacity="0.2">
+        <rect x="4" y="6" width="28" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="4" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="28" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="2" y="28" width="32" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="6" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="25" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="14" y="2" width="8" height="8" rx="1" fill="#1a1f35"/>
+        <rect x="16" y="0" width="4" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="8" y="14" width="20" height="14" rx="1" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/>
+      </svg>
+      <p class="logo-placeholder-label">Throne logo here</p>
+    </div>
+    <p class="hero-tagline">"Every piece holds a story, and every story holds a heart."</p>
+    <div class="hero-btns">
+      <a class="btn" href="collection.html">Shop Collections</a>
+      <a class="btn-ghost" href="about.html">Read Our Story</a>
+    </div>
+  </section>
+
+  <section class="section-white">
+    <h2 class="sec-title-script">The Mystery of Chastity</h2>
+    <div class="product-grid">
+      <a class="product-card" href="collection.html">
+        <div class="product-img">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="#1a1f35" stroke-width="0.75"/><path d="M20 30 Q24 38 28 30" stroke="#1a1f35" stroke-width="0.75" fill="none"/><circle cx="18" cy="18" r="2" fill="rgba(26,31,53,0.2)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="30" cy="18" r="2" fill="rgba(26,31,53,0.2)" stroke="#1a1f35" stroke-width="0.5"/></svg>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Jesus Wept</p>
+          <p class="product-line">The Mystery of Chastity</p>
+          <p class="product-price">from $85</p>
+        </div>
+      </a>
+      <a class="product-card" href="collection.html">
+        <div class="product-img">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 10 C24 10 14 20 14 28 C14 34 18.5 38 24 38 C29.5 38 34 34 34 28 C34 20 24 10 24 10Z" stroke="#1a1f35" stroke-width="0.75" fill="rgba(26,31,53,0.04)"/><line x1="24" y1="6" x2="24" y2="10" stroke="#1a1f35" stroke-width="1"/><line x1="20" y1="7" x2="24" y2="10" stroke="#1a1f35" stroke-width="0.75"/><line x1="28" y1="7" x2="24" y2="10" stroke="#1a1f35" stroke-width="0.75"/></svg>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Flaming Lily</p>
+          <p class="product-line">The Mystery of Chastity</p>
+          <p class="product-price">from $110</p>
+        </div>
+      </a>
+      <a class="product-card" href="collection.html">
+        <div class="product-img">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M18 10 Q16 20 20 28 Q22 34 24 38" stroke="#1a1f35" stroke-width="0.75" fill="none"/><path d="M24 10 Q24 20 24 28 Q24 34 24 38" stroke="#1a1f35" stroke-width="0.5" fill="none"/><path d="M30 10 Q32 20 28 28 Q26 34 24 38" stroke="#1a1f35" stroke-width="0.75" fill="none"/><ellipse cx="24" cy="38" rx="6" ry="2" stroke="#1a1f35" stroke-width="0.5" fill="rgba(26,31,53,0.06)"/><circle cx="18" cy="10" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="24" cy="9" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="30" cy="10" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/></svg>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Pouring Water</p>
+          <p class="product-line">The Mystery of Chastity</p>
+          <p class="product-price">from $95</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="scripture-band">
+    <p>"Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need."</p>
+    <span class="ref">Hebrews 4:16</span>
+  </div>
+
+  <footer class="ng-footer">
+    <span class="ng-footer-copy">© 2026 Nyamalo Grace. All rights reserved.</span>
+    <div class="ng-footer-links">
+      <a href="collection.html">The Mystery of Chastity</a>
+      <a href="about.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>

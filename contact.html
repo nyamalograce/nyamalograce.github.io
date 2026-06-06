@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Nyamalo Grace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cinzel:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#fff;color:#0a0e1a;font-family:'Playfair Display',serif}
+    .ng-nav{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 2.5rem;background:#fff;border-bottom:0.5px solid rgba(10,14,26,0.15);position:sticky;top:0;z-index:100}
+    .ng-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .ng-brand{font-family:'Cinzel',serif;font-size:14px;letter-spacing:0.18em;color:#0a0e1a;font-weight:500}
+    .ng-nav ul{display:flex;gap:2rem;list-style:none}
+    .ng-nav a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:#0a0e1a;text-decoration:none;text-transform:uppercase;font-weight:500}
+    .ng-nav a:hover{color:#1a1f35}
+    .ng-nav a.active{border-bottom:1px solid #1a1f35}
+    .contact-hero{text-align:center;padding:5rem 2rem 1.5rem}
+    .contact-hero h1{font-family:'Cinzel',serif;font-size:30px;font-weight:500;color:#0a0e1a;letter-spacing:0.1em;margin-bottom:1.25rem}
+    .contact-hero p{font-size:19px;font-style:italic;color:#0a0e1a;max-width:480px;margin:0 auto;line-height:1.9;font-weight:400}
+    .divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2.5rem auto;max-width:280px}
+    .divider-line{flex:1;height:0.5px;background:rgba(10,14,26,0.15)}
+    .divider-cross{color:#1a1f35;font-size:13px}
+    .contact-form-wrap{max-width:540px;margin:0 auto;padding:0 2rem 5rem}
+    .form-group{margin-bottom:1.75rem}
+    .form-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.25em;color:rgba(10,14,26,0.5);text-transform:uppercase;display:block;margin-bottom:0.6rem;font-weight:500}
+    .form-input,.form-textarea{width:100%;border:none;border-bottom:1px solid rgba(10,14,26,0.2);padding:0.6rem 0;font-family:'Playfair Display',serif;font-size:17px;color:#0a0e1a;background:transparent;outline:none;transition:border-color 0.2s;font-weight:400}
+    .form-input:focus,.form-textarea:focus{border-bottom-color:#1a1f35}
+    .form-textarea{resize:none;min-height:120px;line-height:1.7}
+    .form-note{font-size:14px;font-style:italic;color:rgba(10,14,26,0.45);margin-bottom:2rem;line-height:1.7}
+    .form-note a{color:#1a1f35;text-decoration:none;border-bottom:0.5px solid rgba(10,14,26,0.3)}
+    .form-note a:hover{border-bottom-color:#1a1f35}
+    .btn-submit{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;background:#1a1f35;padding:14px 48px;border:none;cursor:pointer;width:100%;font-weight:500;transition:background 0.2s}
+    .btn-submit:hover{background:#0a0e1a}
+    .form-success{display:none;text-align:center;padding:3rem 2rem}
+    .form-success h2{font-family:'Great Vibes',cursive;font-size:42px;color:#0a0e1a;margin-bottom:1rem}
+    .form-success p{font-size:17px;font-style:italic;color:#0a0e1a;line-height:1.9;max-width:400px;margin:0 auto;font-weight:400}
+    .scripture-band{background:#1a1f35;padding:2.5rem;text-align:center}
+    .scripture-band p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.85);letter-spacing:0.02em;margin-bottom:0.5rem;max-width:580px;margin-left:auto;margin-right:auto;font-weight:400}
+    .scripture-band .ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;color:rgba(255,255,255,0.55);font-style:normal;display:block;font-weight:500}
+    .ng-footer{border-top:0.5px solid rgba(255,255,255,0.1);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:#1a1f35}
+    .ng-footer-copy{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.35)}
+    .ng-footer-links{display:flex;gap:1.5rem}
+    .ng-footer-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.35);text-decoration:none;text-transform:uppercase}
+    .ng-footer-links a:hover{color:#fff}
+    @media(max-width:600px){
+      .ng-nav{padding:1rem 1.25rem}.ng-nav ul{gap:1rem}
+      .contact-hero{padding:3rem 1.25rem 1rem}
+      .contact-form-wrap{padding:0 1.25rem 3rem}
+      .ng-footer{flex-direction:column;gap:1rem;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="ng-nav">
+    <a class="ng-logo" href="index.html">
+      <svg width="30" height="34" viewBox="0 0 36 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="6" width="28" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="4" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="28" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="2" y="28" width="32" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="6" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="25" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="14" y="2" width="8" height="8" rx="1" fill="#1a1f35"/>
+        <rect x="16" y="0" width="4" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="8" y="14" width="20" height="14" rx="1" fill="rgba(26,31,53,0.1)" stroke="#1a1f35" stroke-width="0.5"/>
+      </svg>
+      <span class="ng-brand">Nyamalo Grace</span>
+    </a>
+    <ul>
+      <li><a href="collection.html">The Mystery of Chastity</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="contact-hero">
+    <h1>Get in Touch</h1>
+    <p>Whether you have a question about a piece, want to share your story, or simply want to reach out — you are welcome here.</p>
+  </section>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-cross">✝</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="contact-form-wrap">
+    <div id="form-area">
+      <!-- 
+        TO CONNECT THIS FORM TO YOUR EMAIL:
+        1. Go to formspree.io and sign up
+        2. Create a new form and copy your form ID
+        3. Change the form tag below to: <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        4. Remove the onclick from the button and change type to "submit"
+        5. Delete the submitForm() JavaScript function below
+      -->
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input class="form-input" type="text" name="name" id="field-name" placeholder="How shall we address you?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Email</label>
+        <input class="form-input" type="email" name="email" id="field-email" placeholder="Where can we reach you?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input class="form-input" type="text" name="subject" id="field-subject" placeholder="What is this regarding?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Message</label>
+        <textarea class="form-textarea" name="message" id="field-message" placeholder="Share what's on your heart..."></textarea>
+      </div>
+      <p class="form-note">We typically respond within 2–3 business days. You may also reach us directly at <a href="mailto:contact@nyamalograce.com">contact@nyamalograce.com</a>.</p>
+      <button class="btn-submit" type="button" onclick="submitForm()">Send Message</button>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <h2>Thank you.</h2>
+      <p>Your message has been received. We will be in touch with you soon — until then, may you find grace in the time of need.</p>
+    </div>
+  </div>
+
+  <div class="scripture-band">
+    <p>"Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need."</p>
+    <span class="ref">Hebrews 4:16</span>
+  </div>
+
+  <footer class="ng-footer">
+    <span class="ng-footer-copy">© 2026 Nyamalo Grace. All rights reserved.</span>
+    <div class="ng-footer-links">
+      <a href="collection.html">The Mystery of Chastity</a>
+      <a href="about.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    function submitForm() {
+      const name = document.getElementById('field-name').value.trim();
+      const email = document.getElementById('field-email').value.trim();
+      const message = document.getElementById('field-message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message before sending.');
+        return;
+      }
+      document.getElementById('form-area').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>

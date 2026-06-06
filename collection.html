@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mystery of Chastity — Nyamalo Grace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cinzel:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#fff;color:#0a0e1a;font-family:'Playfair Display',serif}
+    .ng-nav{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 2.5rem;background:#fff;border-bottom:0.5px solid rgba(10,14,26,0.15);position:sticky;top:0;z-index:100}
+    .ng-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .ng-brand{font-family:'Cinzel',serif;font-size:14px;letter-spacing:0.18em;color:#0a0e1a;font-weight:500}
+    .ng-nav ul{display:flex;gap:2rem;list-style:none}
+    .ng-nav a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:#0a0e1a;text-decoration:none;text-transform:uppercase;font-weight:500}
+    .ng-nav a:hover{color:#1a1f35}
+    .ng-nav a.active{border-bottom:1px solid #1a1f35}
+    .page{display:none}.page.active{display:block}
+    .collection-hero{text-align:center;padding:4rem 2rem 2.5rem}
+    .collection-hero h1{font-family:'Great Vibes',cursive;font-size:56px;color:#0a0e1a}
+    .collection-grid{padding:2rem 2rem 4rem;max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .product-card-v{border:0.5px solid rgba(10,14,26,0.1);background:#fff;cursor:pointer;transition:box-shadow 0.2s;display:flex;flex-direction:column}
+    .product-card-v:hover{box-shadow:0 4px 24px rgba(10,14,26,0.08)}
+    .card-image{width:100%;aspect-ratio:1;background:#f5f5f5;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(10,14,26,0.08);overflow:hidden}
+    .card-image img{width:100%;height:100%;object-fit:cover}
+    .card-image svg{width:44px;height:44px}
+    .card-meta{padding:0.85rem 1rem 0.75rem;border-bottom:0.5px solid rgba(10,14,26,0.08)}
+    .card-name{font-family:'Cinzel',serif;font-size:13px;color:#0a0e1a;letter-spacing:0.08em;margin-bottom:3px;font-weight:500}
+    .card-price{font-size:15px;font-style:italic;color:#1a1f35;font-weight:600}
+    .card-story{padding:0.75rem 1rem 1rem;display:flex;flex-direction:column;gap:0.5rem;flex:1}
+    .card-story p{font-size:13px;font-style:italic;color:rgba(10,14,26,0.65);line-height:1.6}
+    .story-link{font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.2em;color:#1a1f35;text-transform:uppercase;text-decoration:none;border-bottom:0.5px solid rgba(10,14,26,0.3);padding-bottom:2px;align-self:flex-start;font-weight:500}
+    .story-link:hover{color:#0a0e1a;border-color:#0a0e1a}
+    .detail-back{display:inline-flex;align-items:center;gap:6px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;color:rgba(10,14,26,0.45);text-transform:uppercase;cursor:pointer;padding:1.25rem 2.5rem;border:none;background:none;font-weight:500}
+    .detail-back:hover{color:#1a1f35}
+    .detail-back svg{width:12px;height:12px;fill:currentColor}
+    .swipe-container{position:relative;overflow:hidden;border-bottom:0.5px solid rgba(10,14,26,0.08)}
+    .swipe-track{display:flex;transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+    .swipe-slide{min-width:100%;aspect-ratio:1;background:#f5f5f5;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+    .swipe-slide img{width:100%;height:100%;object-fit:cover}
+    .swipe-slide.video-slide{background:#1a1f35;flex-direction:column;gap:1rem}
+    .swipe-slide.video-slide .video-play{width:56px;height:56px;border:0.5px solid rgba(255,255,255,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .swipe-slide.video-slide .video-play svg{fill:#fff;width:20px;height:20px;margin-left:3px}
+    .swipe-slide.video-slide iframe{width:100%;height:100%;border:none}
+    .swipe-slide.video-slide p{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.45);text-transform:uppercase}
+    .swipe-dots{display:flex;justify-content:center;gap:6px;padding:0.75rem 0}
+    .dot{width:5px;height:5px;border-radius:50%;background:rgba(10,14,26,0.12);border:none;cursor:pointer;padding:0}
+    .dot.active{background:#1a1f35}
+    .swipe-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 0.75rem;pointer-events:none}
+    .swipe-arrow{width:36px;height:36px;background:rgba(255,255,255,0.9);border:0.5px solid rgba(10,14,26,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:all;transition:background 0.2s}
+    .swipe-arrow svg{width:14px;height:14px;fill:#1a1f35}
+    .swipe-arrow:hover{background:#1a1f35}
+    .swipe-arrow:hover svg{fill:#fff}
+    .detail-info{padding:2rem 2.5rem;max-width:680px}
+    .detail-line{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:rgba(10,14,26,0.4);text-transform:uppercase;margin-bottom:0.5rem;font-weight:500}
+    .detail-name{font-family:'Cinzel',serif;font-size:28px;font-weight:500;color:#0a0e1a;letter-spacing:0.05em;margin-bottom:0.5rem}
+    .detail-price{font-size:20px;font-style:italic;color:#1a1f35;margin-bottom:1.5rem;font-weight:600}
+    .detail-divider{height:0.5px;background:rgba(10,14,26,0.1);margin-bottom:1.5rem}
+    .detail-story-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:rgba(10,14,26,0.4);text-transform:uppercase;margin-bottom:0.75rem;font-weight:500}
+    .detail-story-text{font-size:17px;color:#0a0e1a;line-height:1.9;font-style:italic;margin-bottom:2rem;font-weight:400}
+    .btn{display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;background:#1a1f35;padding:14px 36px;text-decoration:none;border:none;cursor:pointer;font-weight:500;transition:background 0.2s}
+    .btn:hover{background:#0a0e1a}
+    .scripture-band{background:#1a1f35;padding:2.5rem;text-align:center}
+    .scripture-band p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.85);letter-spacing:0.02em;margin-bottom:0.5rem;max-width:580px;margin-left:auto;margin-right:auto;font-weight:400}
+    .scripture-band .ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;color:rgba(255,255,255,0.55);font-style:normal;display:block;font-weight:500}
+    .ng-footer{border-top:0.5px solid rgba(255,255,255,0.1);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:#1a1f35}
+    .ng-footer-copy{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.35)}
+    .ng-footer-links{display:flex;gap:1.5rem}
+    .ng-footer-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.35);text-decoration:none;text-transform:uppercase}
+    .ng-footer-links a:hover{color:#fff}
+    @media(max-width:600px){
+      .ng-nav{padding:1rem 1.25rem}.ng-nav ul{gap:1rem}
+      .collection-grid{grid-template-columns:1fr;padding:1.5rem 1.25rem 3rem}
+      .collection-hero h1{font-size:42px}
+      .ng-footer{flex-direction:column;gap:1rem;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="ng-nav">
+    <a class="ng-logo" href="index.html">
+      <svg width="30" height="34" viewBox="0 0 36 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="6" width="28" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="4" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="28" y="10" width="4" height="18" rx="1" fill="#1a1f35"/>
+        <rect x="2" y="28" width="32" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="6" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="25" y="32" width="5" height="6" rx="1" fill="#1a1f35"/>
+        <rect x="14" y="2" width="8" height="8" rx="1" fill="#1a1f35"/>
+        <rect x="16" y="0" width="4" height="4" rx="1" fill="#1a1f35"/>
+        <rect x="8" y="14" width="20" height="14" rx="1" fill="rgba(26,31,53,0.1)" stroke="#1a1f35" stroke-width="0.5"/>
+      </svg>
+      <span class="ng-brand">Nyamalo Grace</span>
+    </a>
+    <ul>
+      <li><a href="collection.html" class="active">The Mystery of Chastity</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- COLLECTION GRID -->
+  <div id="page-collection" class="page active">
+    <div class="collection-hero">
+      <h1>The Mystery of Chastity</h1>
+    </div>
+    <div class="collection-grid">
+
+      <div class="product-card-v" onclick="showDetail('jesus-wept')">
+        <div class="card-image">
+          <!-- Replace with: <img src="images/jesus-wept-thumb.jpg" alt="Jesus Wept" /> -->
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="#1a1f35" stroke-width="0.75"/><path d="M20 30 Q24 38 28 30" stroke="#1a1f35" stroke-width="0.75" fill="none"/><circle cx="18" cy="18" r="2" fill="rgba(26,31,53,0.2)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="30" cy="18" r="2" fill="rgba(26,31,53,0.2)" stroke="#1a1f35" stroke-width="0.5"/></svg>
+        </div>
+        <div class="card-meta">
+          <p class="card-name">Jesus Wept</p>
+          <p class="card-price">from $85</p>
+        </div>
+        <div class="card-story">
+          <p>Grief held with dignity — the shortest verse in scripture, and one of the most profound.</p>
+          <a class="story-link" href="#" onclick="event.stopPropagation();showDetail('jesus-wept');return false;">Watch the Story →</a>
+        </div>
+      </div>
+
+      <div class="product-card-v" onclick="showDetail('flaming-lily')">
+        <div class="card-image">
+          <!-- Replace with: <img src="images/flaming-lily-thumb.jpg" alt="Flaming Lily" /> -->
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 10 C24 10 14 20 14 28 C14 34 18.5 38 24 38 C29.5 38 34 34 34 28 C34 20 24 10 24 10Z" stroke="#1a1f35" stroke-width="0.75" fill="rgba(26,31,53,0.04)"/><line x1="24" y1="6" x2="24" y2="10" stroke="#1a1f35" stroke-width="1"/><line x1="20" y1="7" x2="24" y2="10" stroke="#1a1f35" stroke-width="0.75"/><line x1="28" y1="7" x2="24" y2="10" stroke="#1a1f35" stroke-width="0.75"/></svg>
+        </div>
+        <div class="card-meta">
+          <p class="card-name">Flaming Lily</p>
+          <p class="card-price">from $110</p>
+        </div>
+        <div class="card-story">
+          <p>Courage that blooms in the face of violence — purity that cannot be taken, only surrendered.</p>
+          <a class="story-link" href="#" onclick="event.stopPropagation();showDetail('flaming-lily');return false;">Watch the Story →</a>
+        </div>
+      </div>
+
+      <div class="product-card-v" onclick="showDetail('pouring-water')">
+        <div class="card-image">
+          <!-- Replace with: <img src="images/pouring-water-thumb.jpg" alt="Pouring Water" /> -->
+          <svg viewBox="0 0 48 48" fill="none"><path d="M18 10 Q16 20 20 28 Q22 34 24 38" stroke="#1a1f35" stroke-width="0.75" fill="none"/><path d="M24 10 Q24 20 24 28 Q24 34 24 38" stroke="#1a1f35" stroke-width="0.5" fill="none"/><path d="M30 10 Q32 20 28 28 Q26 34 24 38" stroke="#1a1f35" stroke-width="0.75" fill="none"/><ellipse cx="24" cy="38" rx="6" ry="2" stroke="#1a1f35" stroke-width="0.5" fill="rgba(26,31,53,0.06)"/><circle cx="18" cy="10" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="24" cy="9" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="30" cy="10" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/></svg>
+        </div>
+        <div class="card-meta">
+          <p class="card-name">Pouring Water</p>
+          <p class="card-price">from $95</p>
+        </div>
+        <div class="card-story">
+          <p>Grace poured out freely — healing flows from the throne, not from what was done to us.</p>
+          <a class="story-link" href="#" onclick="event.stopPropagation();showDetail('pouring-water');return false;">Watch the Story →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="scripture-band">
+      <p>"Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need."</p>
+      <span class="ref">Hebrews 4:16</span>
+    </div>
+    <footer class="ng-footer">
+      <span class="ng-footer-copy">© 2026 Nyamalo Grace. All rights reserved.</span>
+      <div class="ng-footer-links">
+        <a href="collection.html">The Mystery of Chastity</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- PRODUCT DETAIL -->
+  <div id="page-detail" class="page">
+    <button class="detail-back" onclick="showPage('collection')">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to Collection
+    </button>
+    <div class="swipe-container">
+      <div class="swipe-track" id="swipe-track"></div>
+      <div class="swipe-arrows">
+        <button class="swipe-arrow" onclick="swipe(-1)"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="swipe-arrow" onclick="swipe(1)"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="swipe-dots" id="swipe-dots"></div>
+    <div class="detail-info" id="detail-info"></div>
+    <div class="scripture-band">
+      <p>"Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need."</p>
+      <span class="ref">Hebrews 4:16</span>
+    </div>
+    <footer class="ng-footer">
+      <span class="ng-footer-copy">© 2026 Nyamalo Grace. All rights reserved.</span>
+      <div class="ng-footer-links">
+        <a href="collection.html">The Mystery of Chastity</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    /*
+      ADDING PRODUCT IMAGES:
+      - Create an "images" folder in your repository
+      - Add 4 photos per product named e.g. jesus-wept-1.jpg, jesus-wept-2.jpg, etc.
+      - Replace the images array in each product with the file paths
+      - Replace the card-image SVG with: <img src="images/jesus-wept-thumb.jpg" alt="..." />
+
+      ADDING VIDEOS:
+      - Upload your video to YouTube or Vimeo
+      - Replace videoEmbed with the embed URL e.g. https://www.youtube.com/embed/VIDEO_ID
+    */
+
+    const products = {
+      'jesus-wept': {
+        name: 'Jesus Wept',
+        price: 'from $85',
+        story: 'A piece that bears witness to grief held with dignity — the shortest verse in scripture, and one of the most profound. This piece is a reminder that sorrow is not weakness, and that God himself wept with those who suffer.',
+        images: [null, null, null, null], // Replace nulls with image paths e.g. 'images/jesus-wept-1.jpg'
+        videoEmbed: null, // Replace with embed URL when ready
+        icon: `<svg width="80" height="80" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="#1a1f35" stroke-width="0.75"/><path d="M20 30 Q24 38 28 30" stroke="#1a1f35" stroke-width="0.75" fill="none"/><circle cx="18" cy="18" r="2" fill="rgba(26,31,53,0.2)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="30" cy="18" r="2" fill="rgba(26,31,53,0.2)" stroke="#1a1f35" stroke-width="0.5"/></svg>`
+      },
+      'flaming-lily': {
+        name: 'Flaming Lily',
+        price: 'from $110',
+        story: 'Courage that blooms in the face of violence — a symbol of purity that cannot be taken, only surrendered. Inspired by those who bore witness to their own irrevocable dignity even when everything was stripped away.',
+        images: [null, null, null, null],
+        videoEmbed: null,
+        icon: `<svg width="80" height="80" viewBox="0 0 48 48" fill="none"><path d="M24 10 C24 10 14 20 14 28 C14 34 18.5 38 24 38 C29.5 38 34 34 34 28 C34 20 24 10 24 10Z" stroke="#1a1f35" stroke-width="0.75" fill="rgba(26,31,53,0.04)"/><line x1="24" y1="6" x2="24" y2="10" stroke="#1a1f35" stroke-width="1"/><line x1="20" y1="7" x2="24" y2="10" stroke="#1a1f35" stroke-width="0.75"/><line x1="28" y1="7" x2="24" y2="10" stroke="#1a1f35" stroke-width="0.75"/></svg>`
+      },
+      'pouring-water': {
+        name: 'Pouring Water',
+        price: 'from $95',
+        story: 'Grace poured out freely — a reminder that healing flows from the throne, not from what was done to us. Worn as a declaration that the one who wears it is filled, not emptied.',
+        images: [null, null, null, null],
+        videoEmbed: null,
+        icon: `<svg width="80" height="80" viewBox="0 0 48 48" fill="none"><path d="M18 10 Q16 20 20 28 Q22 34 24 38" stroke="#1a1f35" stroke-width="0.75" fill="none"/><path d="M24 10 Q24 20 24 28 Q24 34 24 38" stroke="#1a1f35" stroke-width="0.5" fill="none"/><path d="M30 10 Q32 20 28 28 Q26 34 24 38" stroke="#1a1f35" stroke-width="0.75" fill="none"/><ellipse cx="24" cy="38" rx="6" ry="2" stroke="#1a1f35" stroke-width="0.5" fill="rgba(26,31,53,0.06)"/><circle cx="18" cy="10" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="24" cy="9" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/><circle cx="30" cy="10" r="2" fill="rgba(26,31,53,0.15)" stroke="#1a1f35" stroke-width="0.5"/></svg>`
+      }
+    };
+
+    let currentSlide = 0;
+    const totalSlides = 5;
+
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function showDetail(id) {
+      const p = products[id];
+      currentSlide = 0;
+      const angles = ['Front View', 'Side View', 'Detail View', 'Worn View'];
+      document.getElementById('swipe-track').innerHTML = angles.map((a, i) => {
+        const img = p.images[i];
+        return `<div class="swipe-slide">${img
+          ? `<img src="${img}" alt="${p.name} — ${a}" />`
+          : `<div style="text-align:center">${p.icon}<p style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:0.2em;color:rgba(10,14,26,0.25);text-transform:uppercase;margin-top:1rem">${a} — Photo Placeholder</p></div>`
+        }</div>`;
+      }).join('') + `<div class="swipe-slide video-slide">${p.videoEmbed
+        ? `<iframe src="${p.videoEmbed}" allowfullscreen></iframe>`
+        : `<div class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p>The Story — Coming Soon</p>`
+      }</div>`;
+
+      document.getElementById('swipe-dots').innerHTML = Array.from({ length: totalSlides }, (_, i) =>
+        `<button class="dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></button>`
+      ).join('');
+
+      updateSwipe();
+
+      document.getElementById('detail-info').innerHTML = `
+        <p class="detail-line">The Mystery of Chastity</p>
+        <h2 class="detail-name">${p.name}</h2>
+        <p class="detail-price">${p.price}</p>
+        <div class="detail-divider"></div>
+        <p class="detail-story-label">About this piece</p>
+        <p class="detail-story-text">${p.story}</p>
+        <button class="btn">Add to Cart</button>`;
+
+      showPage('detail');
+    }
+
+    function updateSwipe() {
+      document.getElementById('swipe-track').style.transform = `translateX(-${currentSlide * 100}%)`;
+      document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }
+
+    function swipe(dir) {
+      currentSlide = Math.max(0, Math.min(totalSlides - 1, currentSlide + dir));
+      updateSwipe();
+    }
+
+    function goToSlide(i) {
+      currentSlide = i;
+      updateSwipe();
+    }
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', e => {
+      if (Math.abs(touchStartX - e.changedTouches[0].clientX) > 40)
+        swipe(touchStartX - e.changedTouches[0].clientX > 0 ? 1 : -1);
+    });
+  </script>
+
+</body>
+</html>
